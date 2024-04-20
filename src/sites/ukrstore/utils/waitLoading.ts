@@ -1,4 +1,4 @@
-import { $ } from '../../utils/selectors';
+import { $ } from '../../../utils/selectors';
 
 export default function waitLoading(callback: Function) {
 	const loading = $('#j-general-progress') as HTMLElement;

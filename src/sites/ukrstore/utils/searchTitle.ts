@@ -1,5 +1,5 @@
-import { $ } from '../../utils/selectors';
-import { searchButton } from '../ui/buttons';
+import { $ } from '../../../utils/selectors';
+import { searchButton } from '../ui/nodes';
 
 export default function searchTitle(text: string) {
 	const inputTitle = $('.form-group input[name="title"]');

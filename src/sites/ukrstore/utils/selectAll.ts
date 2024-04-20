@@ -1,4 +1,4 @@
-import { $click } from '../../utils/selectors';
+import { $click } from '../../../utils/selectors';
 import waitLoading from './waitLoading';
 
 export default function selectAll() {

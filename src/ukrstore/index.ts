@@ -4,6 +4,8 @@ import { selectForbbidenButton } from './ui/buttons';
 import searchId from './utils/searchId';
 import waitLoading from './utils/waitLoading';
 
+// Pasha P4O7WtK~orM7
+
 const tabs = {
 	_activeTab: 0,
 

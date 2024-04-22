@@ -33,7 +33,8 @@ const handleClick = () => {
 	const tabNumber = activeTab?.getAttribute('data-tab');
 	const createdButton = $('.selectForbbidenButton');
 
-	if (tabNumber === '3') {
+	// if (tabNumber === '3') {
+	if (tabNumber) {
 		menu.append(selectForbbidenButton);
 
 		waitLoading(() => {

@@ -1,15 +1,20 @@
 // Pasha P4O7WtK~orM7
-import createButton from '../../utils/create/createButton';
-import { $, $children } from '../../utils/selectors';
-import waitDOM from '../../utils/wait/waitDOM';
+import createButton from './utils/create/createButton';
+import { $, $children } from './utils/selectors';
+import waitDOM from './utils/wait/waitDOM';
 import { menu, selectForbbidenButton } from './ui/nodes';
 import searchId from './utils/searchId';
 import waitLoading from './utils/waitLoading';
 
-// .text-error.j-mass-action, [data-id="approve"] {
+// .c-actions-panel-items a {
 // 	padding: 0.5em !important;
-// 	background: #0001;
+// 	margin-right: 10px;
+// 	background-color: #0001;
 // 	border-radius: 5px
+// }
+
+// .c-actions-panel-items a:before {
+// 	background: none !important;
 // }
 
 const addButton = (node: Element) => {
@@ -33,9 +38,10 @@ const handleClick = () => {
 	const tabNumber = activeTab?.getAttribute('data-tab');
 	const createdButton = $('.selectForbbidenButton');
 
-	// if (tabNumber === '3') {
-	if (tabNumber) {
-		menu.append(selectForbbidenButton);
+	if (tabNumber === '3') {
+		if (!$('.selectForbbidenButton')) {
+			menu.append(selectForbbidenButton);
+		}
 
 		waitLoading(() => {
 			const list = [...$children('.j-list-body')];

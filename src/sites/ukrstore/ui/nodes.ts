@@ -1,18 +1,16 @@
-import createButton from '../../../utils/create/createButton';
-import { $ } from '../../../utils/selectors';
+import createButton from '../utils/create/createButton';
+import { $, $all } from '../utils/selectors';
 import { forbbidenWords } from '../forbiddenWords';
 import { getList } from '../utils/getList';
 import waitLoading from '../utils/waitLoading';
 
-import '../forbiddenWords';
-
 const checkForbbidenWords = (node: Element) => {
 	const titleNode = node.querySelector('.c-link-ajax') as HTMLElement;
 	const title = titleNode.textContent?.toLowerCase();
+
 	const words = forbbidenWords.some((word) =>
 		title?.includes(word.toLowerCase())
 	);
-	// добавить кол-во
 
 	if (words) {
 		const checkbox = node.querySelector(
@@ -20,7 +18,11 @@ const checkForbbidenWords = (node: Element) => {
 		) as HTMLInputElement;
 		checkbox.checked = true;
 
-		$('.j-mass-total').textContent = '22';
+		(node.closest('.j-list-row') as HTMLElement).style.backgroundColor =
+			'#f002';
+
+		const total = $all('.j-mass-check-item:checked').length.toString();
+		totalSelected.textContent = total;
 	}
 };
 
@@ -29,11 +31,15 @@ const selectForbbiden = async () => {
 
 	waitLoading(() => {
 		const list = getList();
-		$('.c-actions-panel').classList.toggle('hide');
 		list.forEach(checkForbbidenWords);
+
+		if ($all('.j-mass-check-item:checked').length) {
+			$('.c-actions-panel').classList.remove('hide');
+		}
 	});
 };
 
+export const totalSelected = $('.j-mass-total');
 export const menu = $('.form-inline');
 export const resetButton = $('[data-title="Сбросить"]');
 export const searchButton = $('input[value="Найти"]');
@@ -42,4 +48,8 @@ export const selectForbbidenButton = createButton({
 	title: 'Выбрать запрещенное',
 	className: 'selectForbbidenButton',
 	handler: selectForbbiden,
+});
+
+resetButton.addEventListener('click', () => {
+	totalSelected.textContent = '0';
 });

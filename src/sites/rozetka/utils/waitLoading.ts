@@ -1,11 +1,11 @@
 import { $ } from './selectors';
 
 export default function waitLoading(callback: Function) {
-	const loading = $('#j-general-progress') as HTMLElement;
-	loading.click();
+	console.log('loading...');
 
 	const intervalId = setInterval(() => {
-		if (loading.style.display === 'none') {
+		if (!$('.spinner-container')) {
+			console.log('true');
 			clearInterval(intervalId);
 			callback();
 		}

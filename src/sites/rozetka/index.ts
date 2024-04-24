@@ -1,45 +1,83 @@
-// import { $ } from '../../utils/selectors';
-// import waitDOMElement from '../../utils/wait/waitForNode';
+import { copyText } from './utils/copyText';
+import { $, $onclick } from './utils/selectors';
+import waitDOMElement from './utils/waitDOMElement';
 
-// // удалить мигающее уведомление
-// (document.querySelector('#favIcon') as HTMLLinkElement).remove();
+// td {
+// 	font-size: 1.15em !important;
+// }
 
-// //?
-// const findText = (node: HTMLElement) => {
-// 	const userInfoNode = $(node);
+// [data-text-mobile="Артикул"]:hover {
+// 	color: coral
+// }
 
-// 	const nodesName = userInfoNode.querySelectorAll('.info-group--description');
-// 	const nodesPhone = userInfoNode.querySelectorAll('.info-group--link');
+// [id="flatPlace"]:hover {
+// 	color: #00f;
+// 	cursor: pointer;
+// }
 
-// 	const names = [...nodesName].map((node) =>
-// 		(node.textContent as string).trim()
-// 	);
-// 	const phones = [...nodesPhone].map((node) =>
-// 		(node.textContent as string).trim()
-// 	);
+// удалить мигающее уведомление
+(document.querySelector('#favIcon') as HTMLElement).remove();
 
-// 	const user = {
-// 		names: names[0] === names[1] ? true : false,
-// 		phones: phones[0] === phones[1] ? true : false,
-// 	};
+const checkText = (selector: string) => {
+	const node = $(selector);
 
-// 	return user;
-// };
+	const nodesName = node.querySelectorAll('.info-group--description');
+	const nodesPhone = node.querySelectorAll('.info-group--link');
 
-// document.body.addEventListener('click', ({ target }) => {
-// 	const text = target.textContent.trim().slice(5);
+	const names = [...nodesName].map((node) =>
+		(node.textContent as string).trim()
+	);
+	const phones = [...nodesPhone].map((node) =>
+		(node.textContent as string).trim()
+	);
 
-// 	if (target.closest('.edit-input__text')) {
-// 		navigator.clipboard.writeText(text);
-// 		console.log(text);
-// 	}
+	const user = {
+		names: names[0] === names[1] ? true : false,
+		phones: phones[0] === phones[1] ? true : false,
+	};
 
-// 	waitDOMElement('.detail-box--body', () => {
-// 		const { names, phones } = findText('.detail-box--body');
-// 		if (names && phones) {
-// 			// $$('.detail-box--body').style.backgroundColor = '#ddffdd';
-// 		} else {
-// 			$('.detail-box--body').style.backgroundColor = '#ffdddd';
-// 		}
-// 	});
-// });
+	return user;
+};
+
+// вкладка: на подтверждении
+const copyArticle = (e: MouseEvent) => {
+	const target = e.target as HTMLElement;
+	const text = (target.textContent as string).trim().slice(5);
+
+	if (target.closest('.edit-input__text')) {
+		navigator.clipboard.writeText(text);
+	}
+};
+
+const mouseHandler = (e: MouseEvent) => {
+	waitDOMElement('.detail-box--body', () => {
+		const mail = $('[id="flatPlace"');
+		mail.addEventListener('click', () => copyText('[id="flatPlace"]'));
+
+		const { names, phones } = checkText('.detail-box--body');
+
+		if (!names) {
+			$onclick('#recipientDataCopy', () => copyText('#recipientDataCopy'));
+			$('.detail-box--body').style.backgroundColor = '#fdd';
+			$('#recipientDataCopy').style.backgroundColor = '#f77';
+			$('#recipientDataCopy').style.cursor = 'pointer';
+		}
+
+		if (!phones) {
+			$onclick('#recipientPhoneCopy', () => copyText('#recipientPhoneCopy'));
+			$('#recipientPhoneCopy').style.backgroundColor = '#f77';
+			$('.detail-box--body').style.backgroundColor = '#fdd';
+		}
+
+		if ($('.level-2')) {
+			$('.has--present').style.backgroundColor = '#fa0';
+		}
+		if ($('.level-3')) {
+			$('.has--present').style.backgroundColor = '#A1D8B6';
+		}
+	});
+
+	copyArticle(e);
+};
+
+document.body.addEventListener('click', mouseHandler);

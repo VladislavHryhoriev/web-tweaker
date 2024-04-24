@@ -5,12 +5,12 @@ export const $ = <T extends HTMLElement>(selector: string) => {
 
 // Найти все элементы по селектору
 export const $all = <T extends HTMLElement>(selector: string) => {
-	document.querySelectorAll(selector) as NodeListOf<T>;
+	return document.querySelectorAll(selector) as NodeListOf<T>;
 };
 
 // Найти элемент по селектору и возвратить его текст
 export const $text = <T extends HTMLElement>(selector: string) => {
-	return ($(selector) as T)?.innerText;
+	return ($(selector) as T).textContent || '';
 };
 
 // Найти элемент по селектору и возвратить его значение
@@ -39,4 +39,11 @@ export const $closest = <T extends HTMLElement>(
 // Найти все дочерние элементы
 export const $children = <T extends HTMLInputElement>(selector: string) => {
 	return ($(selector) as T).children;
+};
+
+export const $onclick = <T extends HTMLElement>(
+	selector: string,
+	callback: Function
+) => {
+	return ($(selector) as T).addEventListener('click', (e) => callback(e));
 };

@@ -1,4 +1,4 @@
-import { $ } from '../../../utils/selectors';
+import { $ } from './selectors';
 import { searchButton } from '../ui/nodes';
 
 export default function searchTitle(text: string) {

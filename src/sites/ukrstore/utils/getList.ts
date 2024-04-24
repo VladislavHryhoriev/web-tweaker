@@ -1,3 +1,3 @@
-import { $children } from '../../../utils/selectors';
+import { $children } from './selectors';
 
 export const getList = () => [...$children('.j-list-body')];

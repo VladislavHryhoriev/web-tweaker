@@ -15,7 +15,6 @@ const checkForbbidenWords = (node: Element) => {
 			} else {
 				if (
 					title?.includes('девуш') ||
-					title?.includes('киев') ||
 					title?.includes('массаж') ||
 					title?.includes('дама') ||
 					title?.includes('vip')

@@ -1,27 +1,43 @@
-import createButton from '../utils/create/createButton';
-import { $, $all } from '../utils/selectors';
 import { forbbidenWords } from '../forbiddenWords';
+import createButton from '../utils/create/createButton';
 import { getList } from '../utils/getList';
+import { $, $all } from '../utils/selectors';
 import waitLoading from '../utils/waitLoading';
 
 const checkForbbidenWords = (node: Element) => {
 	const titleNode = node.querySelector('.c-link-ajax') as HTMLElement;
-	const title = titleNode.textContent?.toLowerCase();
+	const title = (titleNode.textContent as string).toLowerCase();
 
-	const words = forbbidenWords.some((word) =>
-		title?.includes(word.toLowerCase())
-	);
+	const match = forbbidenWords
+		.map((word) => {
+			if (title.includes(word.toLowerCase())) {
+				return true;
+			} else {
+				if (
+					title?.includes('девуш') ||
+					title?.includes('киев') ||
+					title?.includes('массаж') ||
+					title?.includes('дама') ||
+					title?.includes('vip')
+				) {
+					(node.closest('.j-list-row') as HTMLElement).style.backgroundColor =
+						'#fa03';
+					return false;
+				}
+			}
+		})
+		.filter(Boolean)[0];
 
-	if (words) {
+	if (match) {
 		const checkbox = node.querySelector(
 			'.check.j-mass-check-item'
 		) as HTMLInputElement;
 		checkbox.checked = true;
 
 		(node.closest('.j-list-row') as HTMLElement).style.backgroundColor =
-			'#f002';
+			'#f003';
 
-		const total = $all('.j-mass-check-item:checked').length.toString();
+		const total = `${$all('.j-mass-check-item:checked').length} `;
 		totalSelected.textContent = total;
 	}
 };

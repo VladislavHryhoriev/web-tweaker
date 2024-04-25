@@ -1,7 +1,7 @@
 type CreateButton = {
 	title: string;
 	className: string;
-	handler: (this: HTMLButtonElement, event: MouseEvent) => any;
+	handler: (this: HTMLInputElement, event: MouseEvent) => any;
 };
 
 function mouseHandler(e: MouseEvent, styles: string) {
@@ -12,7 +12,7 @@ const style = {
 	blue: `
 		display: inline-block;
 		position: relative;
-		background-color: #0849b2;
+		background-color: #0849b2 !important;
 		color: white;
 		z-index: 100;
 		padding: 0.25em 1em;
@@ -27,9 +27,9 @@ export default function createButton({
 	className,
 	handler,
 }: CreateButton) {
-	const button = document.createElement('button');
-
-	button.textContent = title;
+	const button = document.createElement('input');
+	button.type = 'button';
+	button.value = title;
 	button.style.cssText = style.blue;
 	button.classList.add(className);
 	button.addEventListener('click', handler);

@@ -1,8 +1,8 @@
 import { forbbidenWords } from '../forbiddenWords';
 import createButton from '../utils/create/createButton';
-import { getList } from '../utils/getList';
-import { $, $all } from '../utils/selectors';
-import waitLoading from '../utils/waitLoading';
+import { list } from '../utils/list';
+import waitLoading from '../utils/wait/waitLoading';
+import { resetButton } from './resetButton';
 
 const checkForbbidenWords = (node: Element) => {
 	const titleNode = node.querySelector('.c-link-ajax') as HTMLElement;
@@ -36,8 +36,7 @@ const checkForbbidenWords = (node: Element) => {
 		(node.closest('.j-list-row') as HTMLElement).style.backgroundColor =
 			'#f003';
 
-		const total = `${$all('.j-mass-check-item:checked').length} `;
-		totalSelected.textContent = total;
+		list.updateTotal();
 	}
 };
 
@@ -45,26 +44,16 @@ const selectForbbiden = async () => {
 	resetButton.click();
 
 	waitLoading(() => {
-		const list = getList();
-		list.forEach(checkForbbidenWords);
+		list.all.forEach(checkForbbidenWords);
 
-		if ($all('.j-mass-check-item:checked').length) {
-			$('.c-actions-panel').classList.remove('hide');
+		if (list.totalSelected) {
+			list.showModMenu();
 		}
 	});
 };
-
-export const totalSelected = $('.j-mass-total');
-export const menu = $('.form-inline');
-export const resetButton = $('[data-title="Сбросить"]');
-export const searchButton = $('input[value="Найти"]');
 
 export const selectForbbidenButton = createButton({
 	title: 'Выбрать запрещенное',
 	className: 'selectForbbidenButton',
 	handler: selectForbbiden,
-});
-
-resetButton.addEventListener('click', () => {
-	totalSelected.textContent = '0';
 });

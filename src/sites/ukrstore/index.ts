@@ -1,10 +1,12 @@
 // Pasha P4O7WtK~orM7
+import { selectForbbidenButton } from './ui/selectForbbidenButton';
 import createButton from './utils/create/createButton';
-import { $, $children } from './utils/selectors';
+import { list } from './utils/list';
+import searchId from './utils/search/searchId';
+import { $ } from './utils/selectors';
+import { setupButtons } from './utils/setupButtons';
 import waitDOM from './utils/wait/waitDOM';
-import { menu, selectForbbidenButton } from './ui/nodes';
-import searchId from './utils/searchId';
-import waitLoading from './utils/waitLoading';
+import waitLoading from './utils/wait/waitLoading';
 
 // .c-actions-panel-items a {
 // 	padding: 0.5em !important;
@@ -17,7 +19,7 @@ import waitLoading from './utils/waitLoading';
 // 	background: none !important;
 // }
 
-const addButton = (node: Element) => {
+const filterIdButton = (node: Element) => {
 	const currentNode = node.querySelector('.j-mob-table-menu') as HTMLElement;
 	const currentId = currentNode?.firstElementChild
 		?.getAttribute('onclick')
@@ -39,14 +41,8 @@ const handleClick = () => {
 	const createdButton = $('.selectForbbidenButton');
 
 	if (tabNumber === '3') {
-		if (!$('.selectForbbidenButton')) {
-			menu.append(selectForbbidenButton);
-		}
-
-		waitLoading(() => {
-			const list = [...$children('.j-list-body')];
-			list.forEach(addButton);
-		});
+		if (!$('.selectForbbidenButton')) setupButtons();
+		waitLoading(() => list.all.forEach(filterIdButton));
 	} else {
 		createdButton && $('.form-inline')?.removeChild(selectForbbidenButton);
 	}

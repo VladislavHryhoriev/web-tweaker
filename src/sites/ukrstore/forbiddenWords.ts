@@ -46,5 +46,6 @@ export const forbbidenWords = [
 	'Vip условия',
 	'strong',
 	'supply',
-	'high quality',
+	'quality',
+	'weight Loss',
 ];

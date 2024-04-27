@@ -1,6 +1,6 @@
 import { copyText } from './utils/copyText';
 import { $, $onclick } from './utils/selectors';
-import waitDOMElement from './utils/waitDOMElement';
+import waitDOMElement from './utils/wait/waitDOMElement';
 
 // td {
 // 	font-size: 1.15em !important;

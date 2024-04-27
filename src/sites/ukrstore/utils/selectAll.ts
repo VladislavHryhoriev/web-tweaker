@@ -1,5 +1,5 @@
 import { $click } from './selectors';
-import waitLoading from './waitLoading';
+import waitLoading from './wait/waitLoading';
 
 export default function selectAll() {
 	waitLoading(() => {

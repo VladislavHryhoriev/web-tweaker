@@ -1,4 +1,4 @@
-import { $ } from './selectors';
+import { $ } from '../selectors';
 
 export default function waitLoading(callback: Function) {
 	console.log('loading...');

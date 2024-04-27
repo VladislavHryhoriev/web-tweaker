@@ -1,7 +1,7 @@
-import { $ } from './selectors';
-import { searchButton } from '../ui/nodes';
-import selectAll from './selectAll';
-import waitLoading from './waitLoading';
+import { $ } from '../selectors';
+import { searchButton } from '../../ui/searchButton';
+import selectAll from '../selectAll';
+import waitLoading from '../wait/waitLoading';
 
 export default function searchId(text: string) {
 	const inputId = $('.form-group input[name="uid"]');

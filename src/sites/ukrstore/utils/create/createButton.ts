@@ -17,7 +17,7 @@ export default function createButton({
 }: CreateButton) {
 	const style = `
 		.${className} {
-			display: inline-block;
+			display: inline-block !important;
 			position: relative;
 			background-color: #0849b2 !important;
 			color: white !important;

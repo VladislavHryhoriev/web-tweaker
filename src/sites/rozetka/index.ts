@@ -51,10 +51,10 @@ const copyArticle = (e: MouseEvent) => {
 
 const mouseHandler = (e: MouseEvent) => {
 	waitDOMElement('.detail-box--body', () => {
+		const { names, phones } = checkText('.detail-box--body');
+
 		const mail = $('[id="flatPlace"');
 		mail.addEventListener('click', () => copyText('[id="flatPlace"]'));
-
-		const { names, phones } = checkText('.detail-box--body');
 
 		if (!names) {
 			$onclick('#recipientDataCopy', () => copyText('#recipientDataCopy'));
@@ -67,6 +67,10 @@ const mouseHandler = (e: MouseEvent) => {
 			$onclick('#recipientPhoneCopy', () => copyText('#recipientPhoneCopy'));
 			$('#recipientPhoneCopy').style.backgroundColor = '#f77';
 			$('.detail-box--body').style.backgroundColor = '#fdd';
+		}
+
+		if ($('.level-1')) {
+			$('.has--present').style.backgroundColor = '#f00';
 		}
 
 		if ($('.level-2')) {

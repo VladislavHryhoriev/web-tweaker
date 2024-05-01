@@ -1,4 +1,8 @@
 // Pasha P4O7WtK~orM7
+import { approveButton } from './ui/approveButton';
+import { blockButton } from './ui/blockButton';
+import { proccessButton } from './ui/proccessButton';
+import { resetButton } from './ui/resetButton';
 import { selectForbbidenButton } from './ui/selectForbbidenButton';
 import createButton from './utils/create/createButton';
 import { list } from './utils/list';
@@ -50,3 +54,28 @@ const handleClick = () => {
 
 waitDOM(handleClick);
 document.body.addEventListener('click', handleClick);
+
+document.addEventListener('keydown', (e: KeyboardEvent) => {
+	if (e.ctrlKey) {
+		if (e.code === 'Quote') {
+			e.preventDefault();
+			selectForbbidenButton.click();
+		}
+		if (e.code === 'Backslash') {
+			e.preventDefault();
+			proccessButton.click();
+		}
+		if (e.code === 'BracketLeft') {
+			e.preventDefault();
+			approveButton.click();
+		}
+		if (e.code === 'BracketRight') {
+			e.preventDefault();
+			blockButton.click();
+		}
+		if (e.code === 'keyR') {
+			e.preventDefault();
+			resetButton.click();
+		}
+	}
+});

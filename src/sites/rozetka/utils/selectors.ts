@@ -10,7 +10,7 @@ export const $all = <T extends HTMLElement>(selector: string) => {
 
 // Найти элемент по селектору и возвратить его текст
 export const $text = <T extends HTMLElement>(selector: string) => {
-	return ($(selector) as T).textContent || '';
+	return ($(selector) as T)?.textContent?.trim();
 };
 
 // Найти элемент по селектору и возвратить его значение

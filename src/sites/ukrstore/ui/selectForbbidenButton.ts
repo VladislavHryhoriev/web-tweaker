@@ -20,6 +20,7 @@ const checkForbbidenWords = (node: Element) => {
 					title?.includes('милых дама') ||
 					title?.includes('киев') ||
 					title?.includes('надоело') ||
+					title?.includes('гибкий график') ||
 					title?.includes('vip')
 				) {
 					(node.closest('.j-list-row') as HTMLElement).style.backgroundColor =

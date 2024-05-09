@@ -18,7 +18,6 @@ const checkForbbidenWords = (node: Element) => {
 					title?.includes('женщин') ||
 					title?.includes('массаж') ||
 					title?.includes('милых дама') ||
-					title?.includes('киев') ||
 					title?.includes('надоело') ||
 					title?.includes('гибкий график') ||
 					title?.includes('лучшие условия') ||

@@ -36,6 +36,8 @@ export const forbbidenWords = [
 	'Работа мечты',
 	'18+',
 	'cas',
+	'c a s',
+	'bmk',
 	'интим',
 	'эскорт',
 	'сигарет',

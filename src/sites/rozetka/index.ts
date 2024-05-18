@@ -1,3 +1,4 @@
+import { checkText } from './utils/checkText';
 import { copyText } from './utils/copyText';
 import { $, $onclick, $text } from './utils/selectors';
 import { nodes, selectors } from './utils/ui/nodes';
@@ -18,28 +19,6 @@ import waitDOMElement from './utils/wait/waitDOMElement';
 
 // удалить мигающее уведомление вкладки
 (document.querySelector('#favIcon') as HTMLElement).remove();
-//
-
-const checkText = (selector: string) => {
-	const node = $(selector);
-
-	const nodesName = node.querySelectorAll('.info-group--description');
-	const nodesPhone = node.querySelectorAll('.info-group--link');
-
-	const names = [...nodesName].map((node) =>
-		(node.textContent as string).trim()
-	);
-	const phones = [...nodesPhone].map((node) =>
-		(node.textContent as string).trim()
-	);
-
-	const user = {
-		names: names[0] === names[1] ? true : false,
-		phones: phones[0] === phones[1] ? true : false,
-	};
-
-	return user;
-};
 
 // вкладка: на подтверждении
 const copyArticle = (e: MouseEvent) => {

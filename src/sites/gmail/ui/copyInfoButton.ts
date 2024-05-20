@@ -32,13 +32,10 @@ const copyInfo = () => {
 		id: getText('№ замовлення:'),
 		payType: getText('Спосіб оплати:'),
 		deliveryType: getText('Спосіб доставки:'),
-		clientType: getText('Телефон:')
-			? `Дроп: ${getText('Телефон:')}`
-			: 'Не дроп',
+		clientType: getText('Телефон:') ? `Дроп: ${getText('Телефон:')}` : 'Не дроп',
 		deliveryInfo: words.filter((word) => word !== '').join(' '),
 		total:
-			getElementByText('Всього:').parentElement?.nextElementSibling
-				?.textContent,
+			getElementByText('Всього:').parentElement?.nextElementSibling?.textContent,
 		products: products,
 		comment: getElementByText('Інструкції')
 			? getElementByText('Інструкції').closest('thead')?.nextElementSibling

@@ -1,7 +1,10 @@
+import { copyButton } from './ui/copyInfoButton';
 import { selectors } from './ui/nodes';
-import { setupButtons } from './utils/setupButtons';
+import { $$ } from './utils/selectors';
 import waitDOMElement from './utils/wait/waitDOMElement';
 
 waitDOMElement(selectors.menu, () => {
-	setupButtons();
+	if (!$$('.copyInfo')) {
+		$$(selectors.menu).append(copyButton);
+	}
 });

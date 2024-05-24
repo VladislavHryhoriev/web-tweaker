@@ -2,12 +2,18 @@ import createButton from '../utils/create/createButton';
 import { getElementByText } from '../utils/getElementByText';
 
 const getText = (text: string) => {
-	return getElementByText(text)?.nextSibling?.textContent?.trim() || '';
+	console.log(getElementByText(text)?.nextSibling?.textContent?.trim());
+
+	return getElementByText(text)?.nextSibling?.textContent?.trim();
 };
 
-const copyInfo = () => {
+export const copyInfo = () => {
 	const words = [] as string[];
-	getElementByText('Адреса доставки')
+
+	const node =
+		getElementByText('Адрес доставки') || getElementByText('Адреса доставки');
+
+	node
 		.closest('thead')
 		?.nextElementSibling?.children[0].children[1].childNodes.forEach((node) => {
 			words.push(node.textContent as string);
@@ -34,8 +40,8 @@ const copyInfo = () => {
 		deliveryType: getText('Спосіб доставки:'),
 		clientType: getText('Телефон:') ? `Дроп: ${getText('Телефон:')}` : 'Не дроп',
 		deliveryInfo: words.filter((word) => word !== '').join(' '),
-		total:
-			getElementByText('Всього:').parentElement?.nextElementSibling?.textContent,
+		total: (getElementByText('Всього:') || getElementByText('Итого:')).parentElement
+			?.nextElementSibling?.textContent,
 		products: products,
 		comment: getElementByText('Інструкції')
 			? getElementByText('Інструкції').closest('thead')?.nextElementSibling

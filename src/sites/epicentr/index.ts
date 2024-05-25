@@ -213,3 +213,9 @@
 
 // 	window.addEventListener('mousemove', checkUrl);
 // };
+
+const t = new Date(1716623937023).getTime();
+const r = new Date('2024-06-5').getTime();
+
+if (r > t) {
+}

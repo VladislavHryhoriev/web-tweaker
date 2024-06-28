@@ -1,8 +1,8 @@
-import { $$ } from '../selectors';
+import { $ } from '../selectors';
 
 export default function waitDOMElement(selector: string, callback: Function) {
 	const intervalId = setInterval(() => {
-		const node = $$(selector);
+		const node = $(selector);
 		if (node) {
 			clearInterval(intervalId);
 			callback(node);

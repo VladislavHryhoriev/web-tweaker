@@ -21,6 +21,7 @@ const checkForbbidenWords = (node: Element) => {
 					title?.includes('надоело') ||
 					title?.includes('гибкий график') ||
 					title?.includes('лучшие условия') ||
+					title?.includes('хороший доход') ||
 					title?.includes('vip')
 				) {
 					(node.closest('.j-list-row') as HTMLElement).style.backgroundColor =
@@ -37,8 +38,7 @@ const checkForbbidenWords = (node: Element) => {
 		) as HTMLInputElement;
 		checkbox.checked = true;
 
-		(node.closest('.j-list-row') as HTMLElement).style.backgroundColor =
-			'#f003';
+		(node.closest('.j-list-row') as HTMLElement).style.backgroundColor = '#f003';
 
 		list.updateTotal();
 	}

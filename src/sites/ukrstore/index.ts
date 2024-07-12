@@ -7,7 +7,7 @@ import { selectForbbidenButton } from './ui/selectForbbidenButton';
 import createButton from './utils/create/createButton';
 import { list } from './utils/list';
 import searchId from './utils/search/searchId';
-import { $ } from './utils/selectors';
+import { $, $all } from './utils/selectors';
 import { setupButtons } from './utils/setupButtons';
 import waitDOM from './utils/wait/waitDOM';
 import waitLoading from './utils/wait/waitLoading';
@@ -39,17 +39,29 @@ const filterIdButton = (node: Element) => {
 	}
 };
 
-const handleClick = () => {
-	const activeTab = $(`li.tab.active`).firstElementChild;
-	const tabNumber = activeTab?.getAttribute('data-tab');
-	const createdButton = $('.selectForbbidenButton');
+const addPerPage = () => {
+	const perPageListSelector = $all('.dropdown-menu.dropdown-menu-right')[1];
 
-	if (tabNumber === '3') {
-		if (!$('.selectForbbidenButton')) setupButtons();
-		waitLoading(() => list.all.forEach(filterIdButton));
-	} else {
-		createdButton && $('.form-inline')?.removeChild(selectForbbidenButton);
+	const perPage500 = document.createElement('li');
+	perPage500.innerHTML = `<a class="j-perpage-selector" href="javascript:" data-val="500">500</a>`;
+	perPageListSelector.appendChild(perPage500);
+	console.log(perPageListSelector);
+};
+
+const handleClick = () => {
+	// const activeTab = $(`li.tab.active`).firstElementChild;
+	// const tabNumber = activeTab?.getAttribute('data-tab');
+	// const createdButton = $('.selectForbbidenButton');
+
+	// if (tabNumber === '3' || tabNumber === '3') {
+	if (!$('.selectForbbidenButton')) {
+		addPerPage();
+		setupButtons();
 	}
+	waitLoading(() => list.all.forEach(filterIdButton));
+	// } else {
+	// createdButton && $('.form-inline')?.removeChild(selectForbbidenButton);
+	// }
 };
 
 waitDOM(handleClick);

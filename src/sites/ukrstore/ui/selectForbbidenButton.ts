@@ -17,11 +17,12 @@ const checkForbbidenWords = (node: Element) => {
 					title?.includes('девуш') ||
 					title?.includes('женщин') ||
 					title?.includes('массаж') ||
-					title?.includes('милых дама') ||
+					title?.includes('милых дам') ||
 					title?.includes('надоело') ||
 					title?.includes('гибкий график') ||
 					title?.includes('лучшие условия') ||
 					title?.includes('хороший доход') ||
+					title?.includes('c a s') ||
 					title?.includes('vip')
 				) {
 					(node.closest('.j-list-row') as HTMLElement).style.backgroundColor =

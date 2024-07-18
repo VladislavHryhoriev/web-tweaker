@@ -1,6 +1,3 @@
-// import { setupButtons } from './utils/setupButtons';
-// import waitDOM from './utils/wait/waitDOM';
-
 // const selectByText = (text, array) =>
 // 	array.filter((node) => node.innerText === text)[0];
 
@@ -13,7 +10,7 @@
 //     bottom: 10px;
 //     background-color: #0849b2;
 //     color: white;
-// 	 	z-index: 100;
+// 	 z-index: 100;
 //     padding: 0.5em 1.5em;
 //     border: 1px solid #000;
 //     border-radius: 5px;
@@ -49,30 +46,29 @@
 // 		const trNodes = [];
 
 // 		setTimeout(() => {
-// 			for (const node of [...document.querySelectorAll('tbody > tr')]) {
-// 				if (node.cells[4].textContent.split('-').length > 2) {
-// 					trNodes.push({
-// 						code: node.cells[4].textContent.split('-').slice(0, 2).join('-'),
-// 						value: node.cells[1].textContent,
-// 						total: node.cells[5].textContent,
-// 					});
-// 				} else {
-// 					trNodes.push({
-// 						code: node.cells[4].textContent.split('-')[0],
-// 						value: node.cells[1].textContent,
-// 						total: node.cells[5].textContent,
-// 					});
-// 				}
+// 			const nodes = [...document.querySelectorAll('tbody > tr')];
+// 			let total = 0;
+// 			for (const node of nodes) {
+// 				// const position = node.cells[0].textContent;
+// 				const quantity = node.cells[1].textContent;
+// 				// const name = node.cells[2].textContent;
+// 				const article = node.cells[5].textContent.split('-2702')[0];
+// 				const price = node.cells[6].textContent.split('.')[0];
+
+// 				trNodes.push({ quantity, article, price });
+// 				total = total + Number(price);
 // 			}
 
 // 			form.products = trNodes;
+// 			form.products.total = total;
 
 // 			const text = `
 //           Алло
 // 			  ● ${form.id}
 //            ● ${form.products.map(
-// 							({ code, value, total }) => ` ${code} - ${value}шт = ${total}грн`
+// 							({ article, quantity }) => ` ${article} - ${quantity}шт`
 // 						)}
+// 					 = ${form.products.total}грн
 //            ● ${form.name}
 //            ● ${form.number}
 //            ● ${form.city ? form.city : 'Город не указан'}
@@ -108,7 +104,7 @@
 // };
 
 // const checkUrl = () => {
-// 	if (location.href.includes('edit')) {
+// 	if (location.href.includes('edit') || location.href.includes('show')) {
 // 		document.querySelector('.copy-list-button').style.display = 'block';
 // 	} else {
 // 		document.querySelector('.copy-list-button').style.display = 'none';
@@ -127,7 +123,3 @@
 // };
 
 // window.addEventListener('click', checkUrl);
-
-// waitDOM(() => {
-// 	setupButtons();
-// });

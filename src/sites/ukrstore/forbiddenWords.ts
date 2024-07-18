@@ -46,6 +46,8 @@ export const forbbidenWords = [
 	'еротич',
 	'секс',
 	'iqos',
+	'вейп',
+	'vape',
 	'стіки',
 	'стики',
 	'айкос',

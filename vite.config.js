@@ -10,6 +10,7 @@ export default defineConfig({
 				rozetka: './src/sites/rozetka/index.ts',
 				ukrstore: './src/sites/ukrstore/index.ts',
 				gmail: './src/sites/gmail/index.ts',
+				lira: './src/sites/lira/index.ts',
 			},
 		},
 	},

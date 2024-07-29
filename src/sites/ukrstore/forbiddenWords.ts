@@ -50,9 +50,9 @@ export const forbbidenWords = [
 	'vape',
 	'стіки',
 	'стики',
+	'cтики', // английская С
 	'айкос',
 	'Vip условия',
-	'strong',
 	'supply',
 	'quality',
 	'weight Loss',

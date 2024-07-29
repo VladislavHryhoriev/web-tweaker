@@ -4,44 +4,43 @@ import { list } from '../utils/list';
 import waitLoading from '../utils/wait/waitLoading';
 import { resetButton } from './resetButton';
 
+function compareStrings(str1: string, str2: string) {
+	return str1.localeCompare(str2, undefined, { sensitivity: 'base' }) === 0;
+}
+
 const checkForbbidenWords = (node: Element) => {
 	const titleNode = node.querySelector('.c-link-ajax') as HTMLElement;
 	const title = (titleNode.textContent as string).toLowerCase();
 
-	const match = forbbidenWords
-		.map((word) => {
-			if (title.includes(word.toLowerCase())) {
-				return true;
-			} else {
-				if (
-					title?.includes('девуш') ||
-					title?.includes('женщин') ||
-					title?.includes('массаж') ||
-					title?.includes('милых дам') ||
-					title?.includes('надоело') ||
-					title?.includes('гибкий график') ||
-					title?.includes('лучшие условия') ||
-					title?.includes('хороший доход') ||
-					title?.includes('c a s') ||
-					title?.includes('vip')
-				) {
-					(node.closest('.j-list-row') as HTMLElement).style.backgroundColor =
-						'#fa03';
-					return false;
-				}
-			}
-		})
-		.filter(Boolean)[0];
+	const forbidden = forbbidenWords.some((word) => {
+		return (
+			compareStrings(word.toLowerCase(), title) || title.includes(word.toLowerCase())
+		);
+	});
 
-	if (match) {
+	const additionalForbidden = [
+		'девуш',
+		'женщин',
+		'массаж',
+		'милых дам',
+		'надоело',
+		'гибкий график',
+		'лучшие условия',
+		'хороший доход',
+		'c a s',
+		'привет ищу парня',
+		'vip',
+	].some((phrase) => title.includes(phrase));
+
+	if (forbidden) {
 		const checkbox = node.querySelector(
 			'.check.j-mass-check-item'
 		) as HTMLInputElement;
 		checkbox.checked = true;
-
 		(node.closest('.j-list-row') as HTMLElement).style.backgroundColor = '#f003';
-
 		list.updateTotal();
+	} else if (additionalForbidden) {
+		(node.closest('.j-list-row') as HTMLElement).style.backgroundColor = '#fa03';
 	}
 };
 

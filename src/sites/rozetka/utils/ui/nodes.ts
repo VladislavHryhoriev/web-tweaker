@@ -12,6 +12,8 @@ export const selectors = {
 	lvlMedium: '.level-2',
 	lvlLow: '.level-1',
 	orderBox: '.order-detail--body',
+	menuButtons: '.filter-data',
+	productList: '.mdc-data-table__content',
 };
 
 export const nodes = {
@@ -47,5 +49,11 @@ export const nodes = {
 	},
 	get orderBox() {
 		return $(selectors.orderBox);
+	},
+	get menuButtons() {
+		return $(selectors.menuButtons);
+	},
+	get productList() {
+		return $(selectors.productList);
 	},
 };

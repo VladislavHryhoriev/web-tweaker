@@ -1,7 +1,9 @@
 import { checkText } from './utils/checkText';
 import { copyText } from './utils/copyText';
 import { $, $onclick, $text } from './utils/selectors';
+import { setupButtons } from './utils/setupButtons';
 import { nodes, selectors } from './utils/ui/nodes';
+import waitDOM from './utils/wait/waitDOM';
 import waitDOMElement from './utils/wait/waitDOMElement';
 
 // td {
@@ -18,7 +20,7 @@ import waitDOMElement from './utils/wait/waitDOMElement';
 // }
 
 // удалить мигающее уведомление вкладки
-(document.querySelector('#favIcon') as HTMLElement).remove();
+(document.querySelector('#favIcon') as HTMLElement)?.remove();
 
 // вкладка: на подтверждении
 const copyArticle = (e: MouseEvent) => {
@@ -76,3 +78,8 @@ const mouseHandler = () => {
 
 document.body.addEventListener('click', mouseHandler);
 document.body.addEventListener('click', copyArticle);
+
+// сменить статусы с "нового" на *обрабатывается*
+waitDOM(() => {
+	if (location.href.includes('orders')) setupButtons();
+});

@@ -14,6 +14,7 @@ export const selectors = {
 	orderBox: '.order-detail--body',
 	menuButtons: '.filter-data',
 	productList: '.mdc-data-table__content',
+	searchInput: 'input[formcontrolname="searchNumber"]',
 };
 
 export const nodes = {
@@ -55,5 +56,8 @@ export const nodes = {
 	},
 	get productList() {
 		return $(selectors.productList);
+	},
+	get searchInput() {
+		return $(selectors.searchInput);
 	},
 };

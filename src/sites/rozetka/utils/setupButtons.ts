@@ -9,3 +9,12 @@ export const setupButtons = () => {
 		nodes.menuButtons.append(...buttons);
 	});
 };
+
+export const setupHotkeys = () => {
+	window.addEventListener('keydown', (e) => {
+		if (e.key === '/' && document.activeElement !== nodes.searchInput) {
+			e.preventDefault();
+			nodes.searchInput.focus();
+		}
+	});
+};

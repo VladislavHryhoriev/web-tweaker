@@ -67,4 +67,6 @@ export const forbbidenWords = [
 	'Работа без залог',
 	'cannab',
 	'цигарк',
+	'тютюн',
+	'tobacco',
 ];

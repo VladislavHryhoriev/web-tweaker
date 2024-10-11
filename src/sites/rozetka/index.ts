@@ -1,6 +1,6 @@
 import { copyArticle } from './copyArticle';
 import { checkOrderInfo } from './utils/checkOrderInfo';
-import { setupButtons, setupHotkeys } from './utils/setupButtons';
+import { setupButtons, setupHotkeys } from './utils/setup';
 import waitDOM from './utils/wait/waitDOM';
 
 // td {

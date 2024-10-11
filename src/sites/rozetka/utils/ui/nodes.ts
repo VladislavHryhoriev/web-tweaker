@@ -15,6 +15,7 @@ export const selectors = {
 	menuButtons: '.filter-data',
 	productList: '.mdc-data-table__content',
 	searchInput: 'input[formcontrolname="searchNumber"]',
+	id_navigation: '#navigation',
 };
 
 export const nodes = {

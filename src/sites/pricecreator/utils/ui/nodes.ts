@@ -4,6 +4,7 @@ export const selectors = {
 	navigation: '#navigation',
 	checkall: '#checkall',
 	productsList: '#datatable > tbody > tr',
+	saveButton: 'button[value="save"]',
 };
 
 export const nodes = {
@@ -15,5 +16,8 @@ export const nodes = {
 	},
 	get productsList() {
 		return $all(selectors.productsList);
+	},
+	get saveButton() {
+		return $(selectors.saveButton);
 	},
 };

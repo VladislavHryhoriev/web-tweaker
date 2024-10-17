@@ -30,6 +30,21 @@ const checkForbbidenWords = (node: Element) => {
 		'c a s',
 		'привет ищу парня',
 		'vip',
+		'oxycodon',
+		'meth',
+		'mephed',
+		'heroin',
+		'lsd',
+		'mdma',
+		'ketamin',
+		'xanax',
+		'ephedrin',
+		'fent',
+		'etizolam',
+		'tramadol',
+		'clonazepam',
+		'bromadol',
+		'oxycodone',
 	].some((phrase) => title.includes(phrase));
 
 	if (forbidden) {

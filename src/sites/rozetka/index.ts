@@ -22,7 +22,6 @@ import waitDOM from './utils/wait/waitDOM';
 document.body.addEventListener('click', checkOrderInfo);
 document.body.addEventListener('click', copyArticle);
 
-// сменить статусы с "нового" на *обрабатывается*
 waitDOM(() => {
 	if (location.href.includes('orders')) {
 		setupButtons();

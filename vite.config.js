@@ -12,6 +12,7 @@ export default defineConfig({
 				ukrstore: './src/sites/ukrstore/index.ts',
 				gmail: './src/sites/gmail/index.ts',
 				lira: './src/sites/lira/index.ts',
+				ukrposhta: './src/sites/ukrposhta/index.ts',
 			},
 		},
 	},

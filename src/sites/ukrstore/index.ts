@@ -6,9 +6,11 @@ import { resetButton } from './ui/resetButton';
 import { selectForbbidenButton } from './ui/selectForbbidenButton';
 import createButton from './utils/create/createButton';
 import { list } from './utils/list';
+import { playSound } from './utils/playSound';
 import searchId from './utils/search/searchId';
 import { $, $all } from './utils/selectors';
 import { setupButtons } from './utils/setupButtons';
+import { setupDelayTimer } from './utils/setupDelayTimer';
 import waitDOM from './utils/wait/waitDOM';
 import waitLoading from './utils/wait/waitLoading';
 
@@ -45,7 +47,6 @@ const addPerPage = () => {
 	const perPage500 = document.createElement('li');
 	perPage500.innerHTML = `<a class="j-perpage-selector" href="javascript:" data-val="500">500</a>`;
 	perPageListSelector.appendChild(perPage500);
-	console.log(perPageListSelector);
 };
 
 const handleClick = () => {
@@ -65,6 +66,9 @@ const handleClick = () => {
 };
 
 waitDOM(handleClick);
+
+setupDelayTimer(30, playSound);
+
 document.body.addEventListener('click', handleClick);
 
 document.addEventListener('keydown', (e: KeyboardEvent) => {

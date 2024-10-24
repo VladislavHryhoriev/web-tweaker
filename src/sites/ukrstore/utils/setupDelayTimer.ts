@@ -16,6 +16,4 @@ export const setupDelayTimer = (min: number, callback: Function) => {
 	}, 5000);
 
 	window.addEventListener('focus', resetInactivityTime);
-	window.addEventListener('mousemove', resetInactivityTime);
-	window.addEventListener('keydown', resetInactivityTime);
 };

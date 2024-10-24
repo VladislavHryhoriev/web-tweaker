@@ -14,6 +14,8 @@ const copyIndexes = () => {
 		const city = addressNode?.split(',').slice(-1);
 
 		arr.push(`${index} ${city}, ${address}`);
+
+		arr = arr.sort((a, b) => a.localeCompare(b));
 	});
 
 	const text = arr.join('\n');

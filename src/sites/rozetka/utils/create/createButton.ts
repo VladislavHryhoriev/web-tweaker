@@ -15,7 +15,7 @@ export default function createButton({ title, className, handler }: CreateButton
 		.${className} {
 			display: inline-block;
 			position: relative;
-			background-color: #0849b2 !important;
+			background: #0849b2 !important;
 			color: white;
 			z-index: 100;
 			padding: 0.75em 1em;
@@ -26,7 +26,7 @@ export default function createButton({ title, className, handler }: CreateButton
 			cursor: pointer;
 		}
 		.${className}:hover {
-			background-color: #02218a !important;
+			background: #02218a !important;
 		}
 		.${className}:active:not(:disabled) {
 			transform: translateY(3px);

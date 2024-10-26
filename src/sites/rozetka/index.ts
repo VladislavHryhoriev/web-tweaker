@@ -1,7 +1,7 @@
 import { copyArticle } from './copyArticle';
 import { checkOrderInfo } from './utils/checkOrderInfo';
+import { $ } from './utils/selectors';
 import { setupButtons, setupHotkeys } from './utils/setup';
-import waitDOM from './utils/wait/waitDOM';
 
 // td {
 // 	font-size: 1.15em !important;
@@ -16,15 +16,17 @@ import waitDOM from './utils/wait/waitDOM';
 // 	cursor: pointer;
 // }
 
-// удалить мигающее уведомление вкладки
-(document.querySelector('#favIcon') as HTMLElement)?.remove();
-
-document.body.addEventListener('click', checkOrderInfo);
-document.body.addEventListener('click', copyArticle);
-
-waitDOM(() => {
-	if (location.href.includes('orders')) {
+const observer = new MutationObserver(() => {
+	if (location.href.includes('orders') && !$('.setStatusAPI')) {
 		setupButtons();
 		setupHotkeys();
 	}
 });
+
+observer.observe(document.body, { childList: true, subtree: true });
+
+// удалить мигающее уведомление вкладки
+$('#favIcon')?.remove();
+
+document.body.addEventListener('click', checkOrderInfo);
+document.body.addEventListener('click', copyArticle);

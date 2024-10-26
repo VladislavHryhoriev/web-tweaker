@@ -26,7 +26,13 @@ export default function createButton({ title, className, handler }: CreateButton
 			cursor: pointer;
 		}
 		.${className}:hover {
-			background-color: #02218a;
+			background-color: #02218a !important;
+		}
+		.${className}:active:not(:disabled) {
+			transform: translateY(3px);
+		}
+		.${className}:disabled {
+			background: #444 !important;
 		}
 		`;
 
@@ -38,7 +44,6 @@ export default function createButton({ title, className, handler }: CreateButton
 	const button = document.createElement('input');
 	button.type = 'button';
 	button.value = title;
-	button.style.cssText = style;
 	button.classList.add(className);
 	button.addEventListener('click', handler);
 

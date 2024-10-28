@@ -69,4 +69,5 @@ export const forbbidenWords = [
 	'цигарк',
 	'тютюн',
 	'tobacco',
+	'сигарет',
 ];

@@ -12,6 +12,7 @@ const setStatusAPI = async () => {
 		);
 
 		const { message } = await response.json();
+		console.log(message);
 		button.value = `В обработке: ${message.length}шт`;
 
 		setTimeout(() => {

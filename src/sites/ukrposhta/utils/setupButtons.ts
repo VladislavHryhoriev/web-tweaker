@@ -5,7 +5,6 @@ import waitDOMElement from './wait/waitDOMElement';
 export const setupButtons = () => {
 	waitDOMElement('.row.whiteBase', () => {
 		const menu = $('.row.whiteBase');
-		console.log(menu);
 
 		const buttons = [copyIndexesButton];
 		menu.append(...buttons);

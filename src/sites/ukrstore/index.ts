@@ -6,7 +6,6 @@ import { resetButton } from './ui/resetButton';
 import { selectForbbidenButton } from './ui/selectForbbidenButton';
 import createButton from './utils/create/createButton';
 import { list } from './utils/list';
-import { playSound } from './utils/playSound';
 import searchId from './utils/search/searchId';
 import { $, $all } from './utils/selectors';
 import { setupButtons } from './utils/setupButtons';
@@ -67,7 +66,7 @@ const handleClick = () => {
 
 waitDOM(handleClick);
 
-setupDelayTimer(30, playSound);
+setupDelayTimer(20);
 
 document.body.addEventListener('click', handleClick);
 

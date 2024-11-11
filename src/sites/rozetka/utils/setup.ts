@@ -22,8 +22,6 @@ export const setupButtons = () => {
 
 export const setupHotkeys = () => {
 	window.addEventListener('keydown', (e: KeyboardEvent) => {
-		if (e.code === 'Slash' && document.activeElement !== nodes.searchInput) {
-			findOrder(e);
-		}
+		if (e.code === 'Slash') findOrder(e);
 	});
 };

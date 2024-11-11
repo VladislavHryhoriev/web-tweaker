@@ -54,7 +54,6 @@ export const forbbidenWords = [
 	'айкос',
 	'Vip условия',
 	'supply',
-	'quality',
 	'weight Loss',
 	'hot sale',
 	'powder',

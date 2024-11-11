@@ -44,6 +44,8 @@ const checkForbbidenWords = (node: Element) => {
 		'tramadol',
 		'clonazepam',
 		'bromadol',
+		'high growth hormone',
+		'quality',
 		'oxycodone',
 	].some((phrase) => title.includes(phrase));
 

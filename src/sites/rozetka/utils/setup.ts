@@ -2,6 +2,16 @@ import { nodes, selectors } from './ui/nodes';
 import { setStatusButtonAPI } from './ui/setStatusButtonAPI';
 import waitDOMElement from './wait/waitDOMElement';
 
+const findOrder = (e: KeyboardEvent) => {
+	e.preventDefault();
+	nodes.searchInput.focus();
+	(nodes.searchInput as HTMLInputElement).select();
+	navigator.clipboard
+		.readText()
+		.then((text) => ((nodes.searchInput as HTMLInputElement).value = text))
+		.catch((err) => console.error('Не удалось вставить текст из буфера:', err));
+};
+
 export const setupButtons = () => {
 	const buttons = [setStatusButtonAPI];
 
@@ -11,10 +21,9 @@ export const setupButtons = () => {
 };
 
 export const setupHotkeys = () => {
-	window.addEventListener('keydown', (e) => {
-		if (e.key === '/' && document.activeElement !== nodes.searchInput) {
-			e.preventDefault();
-			nodes.searchInput.focus();
+	window.addEventListener('keydown', (e: KeyboardEvent) => {
+		if (e.code === 'Slash' && document.activeElement !== nodes.searchInput) {
+			findOrder(e);
 		}
 	});
 };

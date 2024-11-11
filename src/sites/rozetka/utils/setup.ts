@@ -4,11 +4,13 @@ import waitDOMElement from './wait/waitDOMElement';
 
 const findOrder = (e: KeyboardEvent) => {
 	e.preventDefault();
-	nodes.searchInput.focus();
-	(nodes.searchInput as HTMLInputElement).select();
+	const input = nodes.searchInput as HTMLInputElement;
+
+	input.focus();
+	input.select();
 	navigator.clipboard
 		.readText()
-		.then((text) => ((nodes.searchInput as HTMLInputElement).value = text))
+		.then((text) => (input.value = text))
 		.catch((err) => console.error('Не удалось вставить текст из буфера:', err));
 };
 

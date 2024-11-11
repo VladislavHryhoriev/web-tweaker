@@ -10,13 +10,9 @@ const mouseHandler = (e: MouseEvent, color: string) => {
 	target.style.backgroundColor = color;
 };
 
-export default function createButton({
-	title,
-	className,
-	handler,
-}: CreateButton) {
+export default function createButton({ title, className, handler }: CreateButton) {
 	const style = `
-		.${className} {
+		.${className} {	
 			display: inline-block;
 			position: relative;
 			background-color: #0849b2 !important;

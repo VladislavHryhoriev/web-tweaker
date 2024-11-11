@@ -1,3 +1,4 @@
-import { setupButtons } from './utils/setupButtons';
+import { setupButtons, setupHotkeys } from './utils/setupButtons';
 
 setupButtons();
+setupHotkeys();

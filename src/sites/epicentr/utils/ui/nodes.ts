@@ -1,7 +1,8 @@
-import { $text, $value } from '../selectors';
+import { $, $all, $text, $value } from '../selectors';
 
 export const selectors = {
 	orderId: '.order-title',
+	products: '.order-products-list > *',
 	total: '.total',
 
 	firstName: 'input[formcontrolname="firstName"]',
@@ -13,6 +14,15 @@ export const selectors = {
 	provider: '.selected-provider',
 	city: '[formcontrolname="settlement"] input',
 	warehouse: '[formcontrolname="office"] textarea',
+	ttn: 'input[formcontrolname="number"]',
+
+	note: '.commentary-field > div',
+
+	orderStatus: '.order-status',
+
+	// buttons
+	menu: '.local-menu',
+	getOrderInfo: '.get-info',
 };
 
 export const nodes = {
@@ -47,5 +57,28 @@ export const nodes = {
 	},
 	get warehouse() {
 		return $value(selectors.warehouse);
+	},
+	get ttn() {
+		return $value(selectors.ttn).replace(' ', '');
+	},
+
+	get note() {
+		return $text(selectors.note);
+	},
+
+	get products() {
+		return [...$all(selectors.products)];
+	},
+
+	get orderStatus() {
+		return $text(selectors.orderStatus);
+	},
+
+	// buttons
+	get menu() {
+		return $(selectors.menu);
+	},
+	get getOrderInfoButton() {
+		return $(selectors.getOrderInfo) as HTMLInputElement;
 	},
 };

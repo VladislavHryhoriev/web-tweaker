@@ -1,4 +1,4 @@
-import { $ } from './utils/selectors';
+import { $, $all } from './utils/selectors';
 import waitDOM from './utils/waitDOM';
 
 const ui = {
@@ -7,13 +7,6 @@ const ui = {
 	},
 	get rejectCallButton() {
 		return $('#phone_hangup_1') as HTMLLinkElement;
-	},
-
-	get modal() {
-		return $('#edit_contact_new_0') as HTMLDivElement;
-	},
-	get modalClose() {
-		return $('#edit_contact_new_0 button[data-card-id="0"]') as HTMLButtonElement;
 	},
 };
 
@@ -27,10 +20,8 @@ waitDOM(() => {
 			ui.rejectCallButton.click();
 		}
 
-		if (ui.modal) {
-			if (ui.modal.style.display === 'block' && e.key === 'Escape') {
-				ui.modalClose.click();
-			}
+		if (e.key === 'Escape') {
+			$all('.modal button[data-card-id]').forEach((node) => node.click());
 		}
 	});
 });

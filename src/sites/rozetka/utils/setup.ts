@@ -7,7 +7,7 @@ const findOrder = (e: KeyboardEvent) => {
 	const input = nodes.searchInput as HTMLInputElement;
 
 	input.focus();
-	input.select();
+	input.value = '';
 	navigator.clipboard
 		.readText()
 		.then((text) => (input.value = text))
@@ -24,6 +24,6 @@ export const setupButtons = () => {
 
 export const setupHotkeys = () => {
 	window.addEventListener('keydown', (e: KeyboardEvent) => {
-		if (e.code === 'Slash') findOrder(e);
+		if (e.code === 'Slash' && location.href.includes('/orders')) findOrder(e);
 	});
 };

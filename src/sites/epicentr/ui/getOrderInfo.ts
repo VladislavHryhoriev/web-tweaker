@@ -1,4 +1,4 @@
-import createButton from '../create/createButton';
+import createButton from '../utils/create/createButton';
 import { nodes } from './nodes';
 
 interface Data {

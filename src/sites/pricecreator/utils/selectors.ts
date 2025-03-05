@@ -5,7 +5,7 @@ export const $ = <T extends HTMLElement>(selector: string) => {
 
 // Найти все элементы по селектору
 export const $all = <T extends HTMLElement>(selector: string) => {
-	return document.querySelectorAll(selector) as NodeListOf<T>;
+	return document.querySelectorAll<T>(selector) as NodeListOf<T>;
 };
 
 // Найти элемент по селектору и возвратить его текст

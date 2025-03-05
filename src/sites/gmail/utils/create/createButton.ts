@@ -1,16 +1,16 @@
-type CreateButton = {
+interface CreateButton {
 	title: string;
 	className: string;
 	handler: (this: HTMLInputElement, event: MouseEvent) => any;
-};
+	absolute?: boolean;
+}
 
-const mouseHandler = (e: MouseEvent, color: string) => {
-	const target = e.target as HTMLElement;
-	target.removeEventListener('mouseout', mouseHandler as EventListener);
-	target.style.backgroundColor = color;
-};
-
-export default function createButton({ title, className, handler }: CreateButton) {
+export default function createButton({
+	title,
+	className,
+	handler,
+	absolute,
+}: CreateButton) {
 	const style = `
 		.${className} {
 			display: inline-block;
@@ -24,6 +24,14 @@ export default function createButton({ title, className, handler }: CreateButton
 			border: none;
 			border-radius: 3px;
 			cursor: pointer;
+		}
+		${
+			absolute &&
+			`.${className} {
+				position: absolute;
+				bottom: 1em;
+				right: 1em;
+			}`
 		}
 		.${className}:hover {
 			background: #02218a !important;

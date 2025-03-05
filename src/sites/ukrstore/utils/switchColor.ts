@@ -2,7 +2,7 @@ import { $ } from './selectors';
 
 export const switchColor = {
 	_intervalId: 0,
-	_temp: $('[rel="icon"]').getAttribute('href') || '',
+	_temp: $('[rel="icon"]')!.getAttribute('href') || '',
 	_iconElement: $('[rel="icon"]') as HTMLLinkElement,
 	_active: false,
 

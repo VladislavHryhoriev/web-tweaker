@@ -5,12 +5,17 @@ export const $ = <T extends HTMLElement>(selector: string) => {
 
 // Найти все элементы по селектору
 export const $all = <T extends HTMLElement>(selector: string) => {
-	return document.querySelectorAll(selector) as NodeListOf<T>;
+	return document.querySelectorAll<T>(selector) as NodeListOf<T>;
 };
 
 // Найти элемент по селектору и вернуть его текст
 export const $text = <T extends HTMLElement>(selector: string) => {
 	return ($(selector) as T)?.innerText.trim();
+};
+
+// Найти и вернут элемент по name
+export const $name = <T extends HTMLInputElement>(selector: string) => {
+	return ($(`[name=${selector}]`) as T).value;
 };
 
 // Найти элемент по селектору и вернуть его значение

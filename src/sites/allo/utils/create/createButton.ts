@@ -1,63 +1,57 @@
-type CreateButton = {
+interface CreateButton {
 	title: string;
 	className: string;
-	handler: (this: HTMLAnchorElement, event: MouseEvent) => any;
-};
-
-const mouseHandler = (e: MouseEvent, color: string) => {
-	const target = e.target as HTMLElement;
-	target.removeEventListener('mouseout', mouseHandler as EventListener);
-	target.style.backgroundColor = color;
-};
+	handler: (this: HTMLInputElement, event: MouseEvent) => any;
+	absolute?: boolean;
+}
 
 export default function createButton({
 	title,
 	className,
 	handler,
+	absolute,
 }: CreateButton) {
-	const styleRelative = `
+	const style = `
 		.${className} {
-			display: inline-block !important;
+			display: inline-block;
 			position: relative;
-			background-color: #0849b2 !important;
-			color: white !important;
+			background: #0849b2 !important;
+			color: white;
 			z-index: 100;
-			padding: 0.25em 1em;
-			margin-right: 0.5em;
+			padding: 0.75em 1em;
+			margin-right: 0.em;
+			margin-left: 0.25em;
 			border: none;
 			border-radius: 3px;
 			cursor: pointer;
 		}
-		.${className}:hover {
-			background-color: #02218a !important;
-		}`;
-
-	const styleAbsolute = `
-		.${className} {
-			display: inline-block !important;
-			position: absolute;
-			background-color: #0849b2 !important;
-			color: white !important;
-			z-index: 100;
-			padding: 0.25em 1em;
-			margin-right: 0.5em;
-			border: none;
-			border-radius: 3px;
-			cursor: pointer;
+		${
+			absolute &&
+			`.${className} {
+				position: absolute;
+				bottom: 1em;
+				right: 1em;
+			}`
 		}
 		.${className}:hover {
-			background-color: #02218a !important;
-		}`;
-	styleAbsolute;
+			background: #02218a !important;
+		}
+		.${className}:active:not(:disabled) {
+			transform: translateY(3px);
+		}
+		.${className}:disabled {
+			background: #444 !important;
+		}
+		`;
 
 	const styleElement = document.createElement('style');
-	styleElement.textContent = styleRelative;
-	styleElement.type = 'text/css';
+	styleElement.textContent = style;
 
 	document.head.appendChild(styleElement);
 
-	const button = document.createElement('a');
-	button.textContent = title;
+	const button = document.createElement('input');
+	button.type = 'button';
+	button.value = title;
 	button.classList.add(className);
 	button.addEventListener('click', handler);
 

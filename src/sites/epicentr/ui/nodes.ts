@@ -1,4 +1,4 @@
-import { $, $all, $text, $value } from '../selectors';
+import { $, $all, $text, $value } from '../utils/selectors';
 
 export const selectors = {
 	orderId: '.order-title',

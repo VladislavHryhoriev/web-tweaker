@@ -1,8 +1,8 @@
-import { copyInfoButton } from '../ui/copyInfoButton';
-import { getElementByText } from './getElementByText';
+import copyInfoButton from '../ui/copyInfoButton';
 
-export const setupButtons = () => {
-	const menu = getElementByText('Редагування замовлення');
+const setupButtons = () => {
 	const buttons = [copyInfoButton];
-	menu.append(...buttons);
+	document.body.append(...buttons);
 };
+
+export default setupButtons;

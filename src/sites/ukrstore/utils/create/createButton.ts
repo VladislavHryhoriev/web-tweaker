@@ -1,20 +1,10 @@
-type CreateButton = {
+interface CreateButton {
 	title: string;
 	className: string;
 	handler: (this: HTMLAnchorElement, event: MouseEvent) => any;
-};
+}
 
-const mouseHandler = (e: MouseEvent, color: string) => {
-	const target = e.target as HTMLElement;
-	target.removeEventListener('mouseout', mouseHandler as EventListener);
-	target.style.backgroundColor = color;
-};
-
-export default function createButton({
-	title,
-	className,
-	handler,
-}: CreateButton) {
+export default function createButton({ title, className, handler }: CreateButton) {
 	const style = `
 		.${className} {
 			display: inline-block !important;

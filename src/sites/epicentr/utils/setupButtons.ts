@@ -1,4 +1,4 @@
-import { getOrderInfoButton } from './ui/getOrderInfo';
+import { getOrderInfoButton } from '../ui/getOrderInfo';
 
 const menu = document.createElement('div');
 menu.classList.add('local-menu');

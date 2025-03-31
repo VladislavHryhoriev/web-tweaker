@@ -15,7 +15,7 @@ export const $text = <T extends HTMLElement>(selector: string) => {
 
 // Найти элемент по селектору и вернуть его значение
 export const $value = <T extends HTMLInputElement>(selector: string) => {
-	return ($(selector) as T).value;
+	return ($(selector) as T)?.value;
 };
 
 // Найти элемент по селектору и вернуть его стили

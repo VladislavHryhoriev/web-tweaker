@@ -93,7 +93,9 @@ const getOrderInfo = () => {
 		};
 
 		copyData(form);
-	} catch (error) {}
+	} catch (error) {
+		console.error(error);
+	}
 };
 
 export const getOrderInfoButton = createButton({

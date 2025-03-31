@@ -24,6 +24,6 @@ export const setupButtons = () => {
 
 export const setupHotkeys = () => {
 	window.addEventListener('keydown', (e: KeyboardEvent) => {
-		if (e.code === 'Slash' && location.href.includes('/orders')) findOrder(e);
+		if (e.code === 'Slash' && location.href.includes('main/orders')) findOrder(e);
 	});
 };
